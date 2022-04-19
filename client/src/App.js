@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import PostList from "./components/PostList";
 import Navbar from "./components/Navbar";
+import Feed from "./components/trial";
 
 class App extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+        <Feed /> 
         <button onClick={this.fetchData}>Fetch Data</button>
         <PostList posts={this.state.posts} users={this.state.users} />
       </div>

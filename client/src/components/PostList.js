@@ -10,7 +10,7 @@ const assignUserName = function(users, post) {
   }
 };
 
-export default function PostList(props) {
+export default function Trial(props) {
 const users = props.users;
   const feed = props.posts.map((post) => {
     return (

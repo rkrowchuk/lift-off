@@ -19,7 +19,7 @@ export default function Navbar() {
       <container className="avatar-container">
         <img
           className="avatar-image"
-          src="https://i.pinimg.com/originals/f3/8f/15/f38f150e6ae908a1e908597a92eb1e99.png"
+          src="https://i.pinimg.com/originals/f3/8f/15/f38f150e6ae908a1e908597a92eb1e99.png" alt="shiba in the outerspace"
         />
         <p>Level 1</p>
       </container>
