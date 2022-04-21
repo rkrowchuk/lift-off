@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from "react";
 import axios from "axios";
 import PostList from "./PostList";
 import CreatePost from "./CreatePost";
+import { Page, PageContent } from "grommet";
 
 export default function Feed(props) {
   const [state, setState] = useState({
@@ -24,10 +25,12 @@ export default function Feed(props) {
       });
   }, []);
   return (
-    <div className="Feed">
-      <CreatePost />
-      <PostList posts={state.posts} users={state.users} />
-    </div>
+    <Page kind="narrow">
+      <PageContent>
+        <CreatePost />
+        <PostList posts={state.posts} users={state.users} />
+      </PageContent>
+    </Page>
     )
 
 

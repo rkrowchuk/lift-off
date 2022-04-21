@@ -5,10 +5,13 @@ import Feed from "./components/Feed";
 import MyPosts from "./components/MyPosts";
 import Guidelines from "./components/Guidelines";
 import Landing from "./components/Landing";
+import { Grommet } from "grommet";
+import "./styles/App.scss";
 
 export default function App() {
   return (
     <div className="App">
+      <Grommet plain>
       <Router>
         <Navbar />
         <Routes>
@@ -17,6 +20,7 @@ export default function App() {
           <Route path="/" element={<Landing />} />
         </Routes>
       </Router>
+      </Grommet>
     </div>
   );
 }
