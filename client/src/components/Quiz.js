@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import "../styles/Quiz.scss";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 export default function Quiz() {
 	const questions = [
     {
@@ -7,8 +10,8 @@ export default function Quiz() {
       answerOptions: [
         { answerText: 'wrong comment#1', isCorrect: false },
         { answerText: 'wrong comment#2', isCorrect: false },
-        { answerText: 'wrong comment#3', isCorrect: true },
-        { answerText: 'correct response#1', isCorrect: false },
+        { answerText: 'wrong comment#3', isCorrect: false },
+        { answerText: 'correct response#1', isCorrect: true },
       ],
     },
 		// {
@@ -58,12 +61,16 @@ export default function Quiz() {
     // }
 	];
 
+  const navigate = useNavigate();
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const [showScore, setShowScore] = useState(false);
   
   const [score, setScore] = useState(0);
   
+  const [userLevel, setUserLevel] = useState(0);
+
   //move to the next question once the button is clicked
   const handleAnswerButtonClick = (isCorrect) => {
       if(isCorrect===true){
@@ -79,13 +86,38 @@ export default function Quiz() {
 
 }
 
+const handleChange = (e) => {
+  setUserLevel(
+);
+};
+
+
+const handleSubmit =(e) => {
+  e.preventDefault();
+  axios 
+  .put("/api/users", { level: 1  }) 
+  .then((res) => { 
+    console.log("from server:", res.data);
+  })
+  .catch((err) => {
+    console.log("error", err); 
+  })
+ }
+
 	return (
     <div className='quiz-container'>
 		<div className='quiz'>
 			{/* HINT: replace "false" with logic to display the 
       score when the user has answered all the questions */}
 			{showScore ? (
+        <>
 				<div className='score-section'>You scored {score} out of {questions.length}</div>
+        <div className="form-container">
+          <form onSubmit={ handleSubmit }>
+        <button><input type="submit" name="level" className="set-user-level-one-button" value={ userLevel } onChange={ handleChange } />LiftOff Starts Here</button>
+        </form>
+        </div>
+        </>
 			) : (
 				<>
 					<div className='question-section'>

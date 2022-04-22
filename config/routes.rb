@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       resources :items, only: [:create, :show, :index, :destroy]
     end 
 
+    put '/users' => 'users#update'
+
     resources :feed, :comments
 
     resources :posts

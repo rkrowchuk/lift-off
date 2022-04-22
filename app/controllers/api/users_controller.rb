@@ -49,9 +49,40 @@ def show
     end
   end
 
+  def update 
+    # puts "user level", params 
+    # @user = User.find_by(session[:user_id])
+    # @user.update(level: params)
+    # render json: {
+      # status: ['user update to level one'],
+      # level: @level
+  # }
+  puts "session user id", session[:user_id]
+  puts "user_id", :user_id 
+  puts "params", params
+  @user = User.find_by(session[:user_id])
+  # if @user.update(params.require(:level).permit(:level))
+  if @user.update!(level:'1')
+    flash[:success] = "user level is successfully updated"
+    render json: {
+      level: @level
+    } 
+  else 
+    flash.now[:error] = "fail to update user level"
+  end 
+end 
+
+  User.update()
+      
+
   private
 
   def user_params
     params.require(:formValue).permit(:name, :email, :parent_email, :password, :password_confirmation)
   end
+
+  # private 
+  # def level_params
+    # params.require(:level).permit(:level)
+  # end 
 end
