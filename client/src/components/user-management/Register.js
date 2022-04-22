@@ -28,7 +28,7 @@ export default function Register(props) {
         console.log("initial res from server", res.data)
         if (res.data.logged_in) {
           props.handleLogin(res.data);
-          redirect("/my-posts");
+          redirect("/quiz");
       } else {
         setformValue({
           errors: res.data.errors
