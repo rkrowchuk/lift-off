@@ -18,11 +18,13 @@ Rails.application.routes.draw do
     post '/logout',   to: 'sessions#destroy'
     get '/logged_in', to: 'sessions#is_logged_in?'
     
+    put '/users' => 'users#update'
+
     resources :users, only: [:create, :show, :index] do 
       resources :items, only: [:create, :show, :index, :destroy]
     end 
 
-    put '/users' => 'users#update'
+   
 
     resources :feed, :comments
 

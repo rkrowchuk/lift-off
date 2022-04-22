@@ -49,6 +49,7 @@ def show
     end
   end
 
+
   def update 
     # puts "user level", params 
     # @user = User.find_by(session[:user_id])
@@ -60,19 +61,17 @@ def show
   puts "session user id", session[:user_id]
   puts "user_id", :user_id 
   puts "params", params
+  
   @user = User.find_by(session[:user_id])
   # if @user.update(params.require(:level).permit(:level))
-  if @user.update!(level:'1')
-    flash[:success] = "user level is successfully updated"
+if  @user.update(params.require(:level[:level]))
     render json: {
-      level: @level
+      level: @level.to_i
     } 
   else 
     flash.now[:error] = "fail to update user level"
   end 
-end 
-
-  User.update()
+end
       
 
   private
@@ -85,4 +84,4 @@ end
   # def level_params
     # params.require(:level).permit(:level)
   # end 
-end
+end 

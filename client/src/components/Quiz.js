@@ -61,7 +61,7 @@ export default function Quiz() {
     // }
 	];
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -87,17 +87,16 @@ export default function Quiz() {
 }
 
 const handleChange = (e) => {
-  setUserLevel(
-);
+  setUserLevel();
 };
-
 
 const handleSubmit =(e) => {
   e.preventDefault();
   axios 
-  .put("/api/users", { level: 1  }) 
+  .put("/api/users/", {level: 1 }) 
   .then((res) => { 
     console.log("from server:", res.data);
+    /*navigate('/my-posts'); */
   })
   .catch((err) => {
     console.log("error", err); 
