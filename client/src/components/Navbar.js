@@ -7,20 +7,23 @@ import { levelName, levelAvatar } from "./helpers/navHelpers";
 import { useStopwatch } from "react-timer-hook";
 
 export default function Navbar(props) {
-  const {
-    seconds,
-    minutes,
-    // hours,
-    // days,
-    // isRunning,
-    // start,
-    // pause,
-    // reset,
-  } = useStopwatch({ autoStart: true });
+  // const {
+  //   seconds,
+  //   minutes,
+  //   // hours,
+  //   // days,
+  //   // isRunning,
+  //   // start,
+  //   // pause,
+  //   // reset,
+  // } = useStopwatch({ autoStart: true });
 
-  useEffect(() => {
-    // start();
-  }, []);
+  //set a variable in order to store in local storage
+  //auto starts on refresh
+  //may need to use pause (on refresh) and then start?
+  const timer = useStopwatch({ autoStart: true });
+
+  localStorage.setItem("navTimer", timer.seconds);
 
   const logOut = () => {
     axios
@@ -39,7 +42,7 @@ export default function Navbar(props) {
     <div>
       <div className="timer-container">
         <p>
-          You've been browsing for {minutes} m {seconds} s
+          You've been browsing for {timer.minutes} m {timer.seconds}s
         </p>
         <ul className="nav-menu">
           <li>
