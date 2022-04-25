@@ -1,26 +1,40 @@
 import React, { useState }  from 'react';
 import axios from "axios"; 
 import "../styles/CreatePost.scss";
+import FormData from 'form-data';
 
 export default function CreatePost(props) {
 
   const [post, setPost] = useState("");
   const [image, setImage] = useState("");
+  const apiImageKey = process.env.REACT_APP_IMG; 
+  const data = new FormData();
+
+  // RK-tried creating the form to send post request
+  data.append("headers", apiImageKey);
+  data.append("image", image);
 
   //const user = localStorage.getItem("liftoffUser");
   const user = props.user;
-  console.log("create post props", props.user);
   // const userData = JSON.parse(user);
   const userId = user.id;
 
   const handleSubmit =(e) => {
     e.preventDefault();
     console.log("post:", post );
-    axios 
-    .post("/api/posts", { text: post, user_id: userId }) 
-    .then((res) => { 
-      console.log("from server:", res.data);
+    axios
+      .post(`https://api.imgbb.com/upload`)
+    .then((res) => {
+      console.log(res.data);
     })
+    // .then((res)) => {
+
+    // }
+    // axios
+    //   .post("/api/posts", { text: post, user_id: userId })
+    // .then((res) => { 
+    //   console.log("from server:", res.data);
+    // })
     .catch((err) => {
       console.log("error", err); 
     })
