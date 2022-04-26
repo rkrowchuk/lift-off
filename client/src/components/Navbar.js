@@ -22,8 +22,17 @@ export default function Navbar(props) {
   //auto starts on refresh
   //may need to use pause (on refresh) and then start?
   const timer = useStopwatch({ autoStart: true });
+  const [time, setTime] = useState(0);
+  sessionStorage.setItem("navTimer", JSON.stringify(timer.seconds));
+  const getTime = sessionStorage.getItem("navTimer");
 
-  localStorage.setItem("navTimer", timer.seconds);
+
+  useEffect(() => {
+    const prevTime= JSON.parse(getTime);
+    setTime(prevTime);
+    console.log("time state", time);
+    console.log("prevTime", prevTime);
+   }, []);
 
   const logOut = () => {
     axios
@@ -41,6 +50,7 @@ export default function Navbar(props) {
   return (
     <div>
       <div className="timer-container">
+        
         <p>
           You've been browsing for {timer.minutes} m {timer.seconds}s
         </p>
