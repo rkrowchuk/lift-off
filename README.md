@@ -49,7 +49,10 @@ LiftOff is a social media app designed for children between the ages of 8-10. Th
 
 
 
-https://user-images.githubusercontent.com/93003917/171439718-0f3793e0-3ff9-479b-9532-81c0d6c4aa2c.mov
+https://user-images.githubusercontent.com/93003917/171440101-7f96480a-6f2f-4c97-a6b6-e5bd9ac5f93b.mov
+
+
+
 
 
 
